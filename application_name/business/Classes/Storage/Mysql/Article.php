@@ -1,6 +1,6 @@
 <?php
 
-class Repository_Database_Article extends Repository_Database implements Repository_Article
+class Storage_Mysql_Article extends Storage_Mysql implements Repository_Article
 {
 	public function get_by_id($article_id)
 	{
