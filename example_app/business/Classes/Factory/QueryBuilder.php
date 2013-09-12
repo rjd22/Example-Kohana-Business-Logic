@@ -2,22 +2,22 @@
 
 class Factory_QueryBuilder {
 
-	public function new_select()
+	public function select()
 	{
 		return new Database_Query_Builder_Select;
 	}
 
-	public function new_insert()
+	public function insert()
 	{
 		return new Database_Query_Builder_Insert;
 	}
 
-	public function new_update()
+	public function update()
 	{
 		return new Database_Query_Builder_Update;
 	}
 
-	public function new_delete()
+	public function delete()
 	{
 		return new Database_Query_Builder_Delete;
 	}

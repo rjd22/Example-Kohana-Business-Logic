@@ -1,6 +1,6 @@
 <?php
 
-class Storage_Mysql {
+class Storage_Database {
 
 	protected $_table_name;
 	protected $_entity_class;
@@ -16,7 +16,7 @@ class Storage_Mysql {
 
 	public function load_object(array $parameters)
 	{
-		$select = $this->_query_builder->new_select();
+		$select = $this->_query_builder->select();
 
 		$select->from($this->_table_name);
 		$select->as_object($this->_entity_class);
@@ -28,7 +28,7 @@ class Storage_Mysql {
 
 	public function load_set(array $parameters)
 	{
-		$select = $this->_query_builder->new_select();
+		$select = $this->_query_builder->select();
 
 		$select->from($this->_table_name);
 		$select->as_object($this->_entity_class);
@@ -51,7 +51,7 @@ class Storage_Mysql {
 			throw new Exception('Cannot create a loaded object');
 		}
 
-		$insert 	= $this->_query_builder->new_insert();
+		$insert 	= $this->_query_builder->insert();
 		$properties = $this->get_reflection($entity);
 
 		$columns = array();
@@ -75,7 +75,7 @@ class Storage_Mysql {
 			throw new Exception('Cannot update a non-loaded object');
 		}
 
-		$update 	= $this->_query_builder->new_update();
+		$update 	= $this->_query_builder->update();
 		$properties = $this->get_reflection($entity);
 
 		$set = array();
@@ -96,7 +96,7 @@ class Storage_Mysql {
 			throw new Exception('Cannot delete a non-loaded object');
 		}
 
-		$delete = $this->_query_builder->new_delete();
+		$delete = $this->_query_builder->delete();
 
 		return (bool) $delete->table($this->_table_name)->where('id', '=', $entity->id)->execute($this->_database);
 	}
