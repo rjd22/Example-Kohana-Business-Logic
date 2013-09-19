@@ -8,6 +8,6 @@ class Factory_Guest
 		$database 		= Database::instance();
 		$article 		= new Storage_Database_Article($query_builder, $database);
 
-		return $guest_views_article = new Usecase_Guest_ViewsArticle($article);
+		return new Usecase_Guest_ViewsArticle($article);
 	}
 }
