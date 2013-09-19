@@ -2,12 +2,12 @@
 
 class Factory_Guest
 {
-	public static function views_article($article_id)
+	public static function views_article()
 	{
-		$database 	= Database::instance();
-		$article 	= new Storage_Mysql_Article($database);
+		$query_builder 	= new Factory_QueryBuilder;
+		$database 		= Database::instance();
+		$article 		= new Storage_Database_Article($query_builder, $database);
 
-		$guest_views_article = new Usecase_Guest_ViewsArticle($article);
-		return $guest_views_article->execute($article_id);
+		return $guest_views_article = new Usecase_Guest_ViewsArticle($article);
 	}
 }
